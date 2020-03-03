@@ -69,12 +69,12 @@
                 <Button Content="Remove"></Button>
             </StackPanel>
             <!-- TODO: brug det dynamiske udskriving nedenfor -->
-            <!--<ListView ItemsSource="XXX"> --><!-- XXX = Collection of Tasks from ViewModel --><!--
+            <!--<ListView ItemsSource="{Binding Assignments}"> 
                 <ItemsControl>
                     <DataTemplate>
                         <StackPanel>
-                            <TextBlock Text="{Binding XXX.TaskName}"></TextBlock>
-                            <TextBlock Text="{Binding XXX.DeadLine}" Margin="0, 0, 300, 0"></TextBlock>
+                            <TextBlock Text="{Binding Sel.Task}"></TextBlock>
+                            <TextBlock Text="{Binding Assignments.DeadLine}" Margin="0, 0, 300, 0"></TextBlock>
                             <Button Content="Remove" Command="{Binding XXXCommand}"></Button>
                         </StackPanel>
                     </DataTemplate>
