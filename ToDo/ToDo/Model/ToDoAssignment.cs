@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ToDo.Model
 {
-    class ToDo
+    public class ToDoAssignment
     {
         #region Instans felter
         private string _task;
@@ -38,13 +38,13 @@ namespace ToDo.Model
 
 
         #region Constructor
-        public ToDo()
+        public ToDoAssignment()
         {
             _task = "Empty";
             _dato = DateTime.Now;
         }
 
-        public ToDo(string task, DateTime dato, int id)
+        public ToDoAssignment(string task, DateTime dato, int id)
         {
             _task = task;
             _dato = dato;
