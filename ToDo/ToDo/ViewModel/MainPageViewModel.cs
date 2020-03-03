@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ToDo.Common;
 using ToDo.Model;
 
 namespace ToDo.ViewModel
@@ -12,12 +13,17 @@ namespace ToDo.ViewModel
     {
         private ObservableCollection<ToDoAssignment> _assignments;
         private ToDoAssignment _selctedAssignment;
+        private bool _showCreateContainer;
         public MainPageViewModel()
         {
             _assignments = new ObservableCollection<ToDoAssignment>();
+            _showCreateContainer = false;
 
             // Tildel knapper:
+            OpenCreateContainerBtn = new RelayCommand(OpenCreateContainerBtnMethod);
         }
+
+        public RelayCommand OpenCreateContainerBtn { get; set; }
 
         public ObservableCollection<ToDoAssignment> Assignments
         {
@@ -29,6 +35,11 @@ namespace ToDo.ViewModel
         {
             get => _selctedAssignment;
             set => _selctedAssignment = value;
+        }
+
+        private void OpenCreateContainerBtnMethod()
+        {
+            _showCreateContainer = true;
         }
     }
 }
