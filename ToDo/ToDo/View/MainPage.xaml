@@ -68,7 +68,7 @@
                 <TextBlock Text="03-03-2020" Margin="0, 0, 520, 0"></TextBlock>
                 <Button Content="Remove"></Button>
             </StackPanel>
-            <!-- TODO: brug det dynamiske udskriving nedenfor -->
+            <!-- TODO: use the dynamic Read below -->
             <!--<ListView ItemsSource="{Binding Assignments}"> 
                 <ItemsControl>
                     <DataTemplate>
@@ -80,6 +80,18 @@
                     </DataTemplate>
                 </ItemsControl>
             </ListView>-->
+            <!-- TODO: IsOpen property should be bound to a bool variable from ViewModel. -->
+            <Popup IsOpen="{Binding ShowCreateContainer}" 
+                   VerticalOffset="0" HorizontalOffset="500" >
+                <StackPanel Background="Purple" Width="350" Height="200" Padding="8">
+                    <TextBlock>Opgave navn: </TextBlock>
+                    <TextBox PlaceholderText="Indtast opgave navn..."></TextBox>
+                    <TextBlock Text="Deadline:"></TextBlock>
+                    <TextBox PlaceholderText="YYYY-MM-DD-HH:mm"></TextBox>
+                    <Button Content="Opret" Command="{Binding XXXCommand}"></Button>
+                </StackPanel>
+            </Popup>
+            <Button Content="Tilføj opgave" Command="{Binding OpenCreateContainerBtn}"></Button>
         </StackPanel>
 
         <!-- Aside -->
