@@ -88,7 +88,7 @@
                     <TextBox PlaceholderText="Indtast opgave navn..."></TextBox>
                     <TextBlock Text="Deadline:"></TextBlock>
                     <TextBox PlaceholderText="YYYY-MM-DD-HH:mm"></TextBox>
-                    <Button Content="Opret" Command="{Binding XXXCommand}"></Button>
+                    <Button Content="Opret" Command="{Binding XXXCommand}"></Button> <!-- Opret opgave command -->
                 </StackPanel>
             </Popup>
             <Button Content="Tilføj opgave" Command="{Binding OpenCreateContainerBtn}"></Button>

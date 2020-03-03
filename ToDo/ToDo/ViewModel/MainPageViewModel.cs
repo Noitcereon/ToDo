@@ -12,7 +12,7 @@ namespace ToDo.ViewModel
     public class MainPageViewModel
     {
         private ObservableCollection<ToDoAssignment> _assignments;
-        private ToDoAssignment _selctedAssignment;
+        private ToDoAssignment _selectedAssignment;
         private bool _showCreateContainer;
         public MainPageViewModel()
         {
@@ -33,8 +33,8 @@ namespace ToDo.ViewModel
 
         public ToDoAssignment SelectedAssignment
         {
-            get => _selctedAssignment;
-            set => _selctedAssignment = value;
+            get => _selectedAssignment;
+            set => _selectedAssignment = value;
         }
 
         private void OpenCreateContainerBtnMethod()
