@@ -7,7 +7,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <Page.Resources>
+        <Style TargetType="TextBlock" x:Name="HeadlineStyle">
+            <Setter Property="FontSize" Value="32"></Setter>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Black"></Setter>
+            <Setter Property="FontSize" Value="16"></Setter>
+        </Style>
+    </Page.Resources>
     <!-- Wrapper -->
     <Grid>
         <!-- 10 columns -->
@@ -39,18 +47,46 @@
         </Grid.RowDefinitions>
 
         <!-- Header -->
-        <StackPanel >
-            <TextBlock Text="To-do" FontSize="36"></TextBlock>
+        <StackPanel x:Name="Header" Grid.Column="0" Grid.Row="0"
+                                    Grid.ColumnSpan="10"
+                    Background="Red">
+            <TextBlock Text="To-do" FontSize="36" Foreground="White"></TextBlock>
         </StackPanel>
 
         <!-- Main -->
-        <StackPanel x:Name="Main">
-            
+        <StackPanel x:Name="Main" Grid.Column="0" Grid.Row="1" 
+                                  Grid.ColumnSpan="6" Grid.RowSpan="9" 
+                    Background="Green">
+            <TextBlock Text="Opgaver" Style="{StaticResource HeadlineStyle}"></TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Vask tøj" Margin="0, 0 , 20, 0"></TextBlock>
+                <TextBlock Text="03-03-2020" Margin="0, 0, 520, 0"></TextBlock>
+                <Button Content="Remove"></Button>
+            </StackPanel>
+            <!-- TODO: brug det dynamiske udskriving nedenfor -->
+            <!--<ListView ItemsSource="XXX"> --><!-- XXX = Collection of Tasks from ViewModel --><!--
+                <ItemsControl>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding XXX.TaskName}"></TextBlock>
+                            <TextBlock Text="{Binding XXX.DeadLine}" Margin="0, 0, 300, 0"></TextBlock>
+                            <Button Content="Remove" Command="{Binding XXXCommand}"></Button>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl>
+            </ListView>-->
         </StackPanel>
 
         <!-- Aside -->
-        <StackPanel x:Name="Aside">
-            
+        <StackPanel x:Name="Aside" Grid.Column="6" Grid.Row="1" 
+                                   Grid.ColumnSpan="4" Grid.RowSpan="9" 
+                    Background="Blue">
+            <TextBlock Text="Færdige opgaver" Style="{StaticResource HeadlineStyle}"></TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Vask tøj" Margin="20, 0 , 20 ,0"></TextBlock>
+                <TextBlock Text="03-03-2020" Margin="0, 0, 270, 0"></TextBlock>
+                <Button Content="Remove"></Button>
+            </StackPanel>
         </StackPanel>
 
     </Grid>
