@@ -15,6 +15,8 @@ namespace ToDo.ViewModel
         public MainPageViewModel()
         {
             _assignments = new ObservableCollection<ToDoAssignment>();
+
+            // Tildel knapper:
         }
 
         public ObservableCollection<ToDoAssignment> Assignments
