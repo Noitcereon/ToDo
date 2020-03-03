@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace ToDo.Common
 {
-    public class RelayCommand
+    public class RelayCommand : ICommand
     {
         private Action _execute;
         private Func<bool> _canExecute = () => true;

@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using ToDo.Annotations;
 using ToDo.Common;
 using ToDo.Model;
 
 namespace ToDo.ViewModel
 {
-    public class MainPageViewModel
+    public class MainPageViewModel : INotifyPropertyChanged
     {
         private ObservableCollection<ToDoAssignment> _assignments;
         private ToDoAssignment _selectedAssignment;
@@ -23,7 +26,16 @@ namespace ToDo.ViewModel
 
         public RelayCommand OpenCreateContainerBtn { get; set; }
 
-        public bool ShowCreateContainer => _showCreateContainer;
+        public bool ShowCreateContainer
+        {
+            get => _showCreateContainer;
+            set
+            {
+                if (value == _showCreateContainer) return;
+                _showCreateContainer = value;
+                OnPropertyChanged();
+            }
+        }
 
         public ObservableCollection<ToDoAssignment> Assignments
         {
@@ -39,7 +51,15 @@ namespace ToDo.ViewModel
 
         private void OpenCreateContainerBtnMethod()
         {
-            _showCreateContainer = true;
+            ShowCreateContainer = true;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
