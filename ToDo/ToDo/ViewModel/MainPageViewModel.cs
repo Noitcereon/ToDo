@@ -51,7 +51,14 @@ namespace ToDo.ViewModel
 
         private void OpenCreateContainerBtnMethod()
         {
-            ShowCreateContainer = true;
+            if (ShowCreateContainer)
+            {
+                ShowCreateContainer = false;
+            }
+            else
+            {
+                ShowCreateContainer = true;
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

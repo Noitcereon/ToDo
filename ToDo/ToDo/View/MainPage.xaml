@@ -63,32 +63,32 @@
                                   Grid.ColumnSpan="6" Grid.RowSpan="9" 
                     Background="Green">
             <TextBlock Text="Opgaver" Style="{StaticResource HeadlineStyle}"></TextBlock>
+            <!-- Hardcoded example -->
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Vask tøj" Margin="0, 0 , 20, 0"></TextBlock>
                 <TextBlock Text="03-03-2020" Margin="0, 0, 520, 0"></TextBlock>
                 <Button Content="Remove"></Button>
             </StackPanel>
-            <!-- TODO: use the dynamic Read below -->
-            <!--<ListView ItemsSource="{Binding Assignments}"> 
-                <ItemsControl>
+            <!--<ListView ItemsSource="{Binding Assignments}" SelectedItem="{Binding SelectedAssignment}">
+                <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
-                            <TextBlock Text="{Binding Sel.Task}"></TextBlock>
-                            <TextBlock Text="{Binding Assignments.DeadLine}" Margin="0, 0, 300, 0"></TextBlock>
+                            <TextBlock Text="{Binding Task}"></TextBlock>
+                            <TextBlock Text="{Binding Dato}" Margin="0, 0, 300, 0"></TextBlock>
                             <Button Content="Remove" Command="{Binding XXXCommand}"></Button>
                         </StackPanel>
                     </DataTemplate>
-                </ItemsControl>
+                </ListView.ItemTemplate>
             </ListView>-->
-            <!-- TODO: IsOpen property should be bound to a bool variable from ViewModel. -->
             <Popup IsOpen="{Binding ShowCreateContainer}" 
                    VerticalOffset="0" HorizontalOffset="500" >
                 <StackPanel Background="Purple" Width="350" Height="200" Padding="8">
-                    <TextBlock>Opgave navn: </TextBlock>
+                    <TextBlock>Opgave navn:</TextBlock>
                     <TextBox PlaceholderText="Indtast opgave navn..."></TextBox>
                     <TextBlock Text="Deadline:"></TextBlock>
                     <TextBox PlaceholderText="YYYY-MM-DD-HH:mm"></TextBox>
-                    <Button Content="Opret" Command="{Binding XXXCommand}"></Button> <!-- Opret opgave command -->
+                    <Button Content="Opret" Command="{Binding XXXCommand}"></Button>
+                    <!-- Opret opgave command -->
                 </StackPanel>
             </Popup>
             <Button Content="Tilføj opgave" Command="{Binding OpenCreateContainerBtn}"></Button>
