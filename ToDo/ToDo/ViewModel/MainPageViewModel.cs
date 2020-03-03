@@ -18,12 +18,12 @@ namespace ToDo.ViewModel
         {
             _assignments = new ObservableCollection<ToDoAssignment>();
             _showCreateContainer = false;
-
-            // Tildel knapper:
             OpenCreateContainerBtn = new RelayCommand(OpenCreateContainerBtnMethod);
         }
 
         public RelayCommand OpenCreateContainerBtn { get; set; }
+
+        public bool ShowCreateContainer => _showCreateContainer;
 
         public ObservableCollection<ToDoAssignment> Assignments
         {
