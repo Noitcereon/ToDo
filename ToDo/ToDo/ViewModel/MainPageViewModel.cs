@@ -23,7 +23,7 @@ namespace ToDo.ViewModel
             set => _assignments = value;
         }
 
-        public ToDoAssignment SelctedAssignment
+        public ToDoAssignment SelectedAssignment
         {
             get => _selctedAssignment;
             set => _selctedAssignment = value;
