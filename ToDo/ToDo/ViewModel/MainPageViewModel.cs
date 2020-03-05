@@ -27,6 +27,7 @@ namespace ToDo.ViewModel
             _showCreateContainer = false;
             OpenCreateContainerBtn = new RelayCommand(OpenCreateContainerBtnMethod);
             CreateNewToDoBtn = new RelayCommand(AddAssignment);
+
         }
 
         public RelayCommand CreateNewToDoBtn { get; set; }
