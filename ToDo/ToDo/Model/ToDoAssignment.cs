@@ -10,7 +10,7 @@ namespace ToDo.Model
     {
         #region Instans felter
         private string _task;
-        private DateTime _dato;
+        private DateTimeOffset _dato;
         //private string _dateColorForNotification;
         private int _id;
         #endregion
@@ -23,7 +23,7 @@ namespace ToDo.Model
             set => _task = value;
         }
 
-        public DateTime Dato
+        public DateTimeOffset Dato
         {
             get => _dato;
             set => _dato = value;
@@ -52,7 +52,7 @@ namespace ToDo.Model
             _dato = DateTime.Now.AddDays(2);
         }
 
-        public ToDoAssignment(string task, DateTime dato)
+        public ToDoAssignment(string task, DateTimeOffset dato)
         {
             _task = task;
             _dato = dato;

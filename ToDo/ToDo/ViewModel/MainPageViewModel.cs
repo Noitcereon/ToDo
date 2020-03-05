@@ -19,7 +19,7 @@ namespace ToDo.ViewModel
         private ToDoAssignment _newAssignment;
         private bool _showCreateContainer;
         private string _toDoString;
-        private DateTime _toDoDateTime;
+        private DateTimeOffset _toDoDateTime;
 
         public MainPageViewModel()
         {
@@ -72,7 +72,7 @@ namespace ToDo.ViewModel
             }
         }
 
-        public DateTime ToDoDateTime
+        public DateTimeOffset ToDoDateTime
         {
             get => _toDoDateTime;
             set
