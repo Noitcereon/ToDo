@@ -97,12 +97,9 @@ namespace ToDo.ViewModel
         public void AddAssignment()
         {
             _newAssignment = new ToDoAssignment(ToDoString,ToDoDateTime);
-
             Assignments.Add(_newAssignment);
             ShowCreateContainer = false;
-            OnPropertyChanged(nameof(Assignments));
             ToDoString = null;
-
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

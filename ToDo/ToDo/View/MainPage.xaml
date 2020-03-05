@@ -69,7 +69,7 @@
                 <TextBlock Text="03-03-2020" Margin="0, 0, 520, 0"></TextBlock>
                 <Button Content="Remove"></Button>
             </StackPanel>
-            <!--<ListView ItemsSource="{Binding Assignments}" SelectedItem="{Binding SelectedAssignment}">
+            <ListView ItemsSource="{Binding Assignments}" SelectedItem="{Binding SelectedAssignment}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
@@ -79,7 +79,7 @@
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            </ListView>-->
+            </ListView>
             <Popup IsOpen="{Binding ShowCreateContainer}" 
                    VerticalOffset="0" HorizontalOffset="500" >
                 <StackPanel Background="Purple" Width="350" Height="200" Padding="8">
