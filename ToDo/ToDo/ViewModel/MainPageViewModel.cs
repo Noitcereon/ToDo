@@ -25,7 +25,10 @@ namespace ToDo.ViewModel
             _assignments = new ObservableCollection<ToDoAssignment>();
             _showCreateContainer = false;
             OpenCreateContainerBtn = new RelayCommand(OpenCreateContainerBtnMethod);
+            CreateNewToDoBtn = new RelayCommand(AddAsignment);
         }
+
+        public RelayCommand CreateNewToDoBtn { get; set; }
 
         public RelayCommand OpenCreateContainerBtn { get; set; }
 
