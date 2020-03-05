@@ -11,7 +11,8 @@ namespace ToDo.Model
         #region Instans felter
         private string _task;
         private DateTime _dato;
-        private int _id; 
+        private string _dateColorForNotification;
+        private int _id;
         #endregion
 
         #region Properties
@@ -34,12 +35,19 @@ namespace ToDo.Model
             set => _id = value;
         }
 
+        public string DateColorForNotification
+        {
+            get { return _dateColorForNotification; }
+            set { _dateColorForNotification = value; }
+        }
+
         #endregion
 
 
         #region Constructor
         public ToDoAssignment()
         {
+            _dateColorForNotification = "Red";
             _task = "Empty";
             _dato = DateTime.Now;
         }
@@ -49,9 +57,21 @@ namespace ToDo.Model
             _task = task;
             _dato = dato;
             _id = id;
+            _dateColorForNotification = "Black";
         }
         #endregion
 
+        #region Methods
 
+        public bool Notify()
+        {
+            bool isNearDeadline = DateTime.Now > Dato.Date.Subtract(TimeSpan.FromDays(3));
+
+            DateColorForNotification = isNearDeadline ? "Red" : "Black";
+
+            return isNearDeadline;
+        }
+
+        #endregion
     }
 }
