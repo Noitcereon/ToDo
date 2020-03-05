@@ -84,10 +84,10 @@
                    VerticalOffset="0" HorizontalOffset="500" >
                 <StackPanel Background="Purple" Width="350" Height="200" Padding="8">
                     <TextBlock>Opgave navn:</TextBlock>
-                    <TextBox PlaceholderText="Indtast opgave navn..."></TextBox>
+                    <TextBox PlaceholderText="Indtast opgave navn..." Text="{Binding ToDoString , Mode=TwoWay}"></TextBox>
                     <TextBlock Text="Deadline:"></TextBlock>
-                    <TextBox PlaceholderText="YYYY-MM-DD-HH:mm"></TextBox>
-                    <Button Content="Opret" Command="{Binding XXXCommand}"></Button>
+                    <TextBox PlaceholderText="YYYY-MM-DD-HH:mm" Text="{Binding ToDoDateTime , Mode=TwoWay}"></TextBox>
+                    <Button Content="Opret" Command="{Binding CreateNewToDoBtn}"></Button>
                     <!-- Opret opgave command -->
                 </StackPanel>
             </Popup>

@@ -16,6 +16,7 @@ namespace ToDo.ViewModel
     {
         private ObservableCollection<ToDoAssignment> _assignments;
         private ToDoAssignment _selectedAssignment;
+        private ToDoAssignment _newAssignment;
         private bool _showCreateContainer;
         private string _toDoString;
         private DateTime _toDoDateTime;
@@ -25,7 +26,7 @@ namespace ToDo.ViewModel
             _assignments = new ObservableCollection<ToDoAssignment>();
             _showCreateContainer = false;
             OpenCreateContainerBtn = new RelayCommand(OpenCreateContainerBtnMethod);
-            CreateNewToDoBtn = new RelayCommand(AddAsignment);
+            CreateNewToDoBtn = new RelayCommand(AddAssignment);
         }
 
         public RelayCommand CreateNewToDoBtn { get; set; }
@@ -46,7 +47,11 @@ namespace ToDo.ViewModel
         public ObservableCollection<ToDoAssignment> Assignments
         {
             get => _assignments;
-            set => _assignments = value;
+            set
+            {
+                _assignments = value;
+                OnPropertyChanged();
+            } 
         }
 
         public ToDoAssignment SelectedAssignment
@@ -89,11 +94,15 @@ namespace ToDo.ViewModel
             }
         }
 
-        public void AddAsignment()
+        public void AddAssignment()
         {
-            ToDoAssignment newAssignment = new ToDoAssignment(ToDoString,ToDoDateTime);
+            _newAssignment = new ToDoAssignment(ToDoString,ToDoDateTime);
 
-            Assignments.Add(newAssignment);
+            Assignments.Add(_newAssignment);
+            ShowCreateContainer = false;
+            OnPropertyChanged(nameof(Assignments));
+            ToDoString = null;
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
