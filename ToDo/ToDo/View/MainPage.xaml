@@ -86,7 +86,8 @@
                     <TextBlock>Opgave navn:</TextBlock>
                     <TextBox PlaceholderText="Indtast opgave navn..." Text="{Binding ToDoString , Mode=TwoWay}"></TextBox>
                     <TextBlock Text="Deadline:"></TextBlock>
-                    <TextBox PlaceholderText="YYYY-MM-DD-HH:mm" Text="{Binding ToDoDateTime , Mode=TwoWay}"></TextBox>
+                    <!-- TextBox PlaceholderText="YYYY-MM-DD-HH:mm" Text="{Binding ToDoDateTime , Mode=TwoWay}"></ -->
+                    <DatePicker Date="{Binding ToDoDateTime, Mode=TwoWay}" />
                     <Button Content="Opret" Command="{Binding CreateNewToDoBtn}"></Button>
                     <!-- Opret opgave command -->
                 </StackPanel>

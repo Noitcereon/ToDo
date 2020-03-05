@@ -49,7 +49,7 @@ namespace ToDo.Model
         {
             //_dateColorForNotification = "Red";
             _task = "Empty";
-            _dato = DateTime.Now;
+            _dato = DateTime.Now.AddDays(2);
         }
 
         public ToDoAssignment(string task, DateTime dato)
@@ -65,7 +65,7 @@ namespace ToDo.Model
 
         public string Notify()
         {
-            bool isNearDeadline = DateTime.Now > Dato.AddDays(-3);
+            bool isNearDeadline = DateTime.Today > Dato.AddDays(-3);
             //bool isNearDeadline = true;
 
 
