@@ -44,11 +44,11 @@ namespace ToDo.Model
             _dato = DateTime.Now;
         }
 
-        public ToDoAssignment(string task, DateTime dato, int id)
+        public ToDoAssignment(string task, DateTime dato)
         {
             _task = task;
             _dato = dato;
-            _id = id;
+            //_id = id;
         }
         #endregion
 

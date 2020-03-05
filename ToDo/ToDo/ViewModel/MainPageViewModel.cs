@@ -17,6 +17,9 @@ namespace ToDo.ViewModel
         private ObservableCollection<ToDoAssignment> _assignments;
         private ToDoAssignment _selectedAssignment;
         private bool _showCreateContainer;
+        private string _toDoString;
+        private DateTime _toDoDateTime;
+
         public MainPageViewModel()
         {
             _assignments = new ObservableCollection<ToDoAssignment>();
@@ -49,6 +52,28 @@ namespace ToDo.ViewModel
             set => _selectedAssignment = value;
         }
 
+        public string ToDoString
+        {
+            get => _toDoString;
+            set
+            {
+                if (value == _toDoString) return;
+                _toDoString = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public DateTime ToDoDateTime
+        {
+            get => _toDoDateTime;
+            set
+            {
+                if (value.Equals(_toDoDateTime)) return;
+                _toDoDateTime = value;
+                OnPropertyChanged();
+            }
+        }
+
         private void OpenCreateContainerBtnMethod()
         {
             if (ShowCreateContainer)
@@ -59,6 +84,13 @@ namespace ToDo.ViewModel
             {
                 ShowCreateContainer = true;
             }
+        }
+
+        public void AddAsignment()
+        {
+            ToDoAssignment newAssignment = new ToDoAssignment(ToDoString,ToDoDateTime);
+
+            Assignments.Add(newAssignment);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
