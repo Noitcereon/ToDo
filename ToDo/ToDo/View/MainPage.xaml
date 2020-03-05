@@ -64,18 +64,18 @@
                     Background="Green">
             <TextBlock Text="Opgaver" Style="{StaticResource HeadlineStyle}"></TextBlock>
             <!-- Hardcoded example -->
-            <StackPanel Orientation="Horizontal">
+            <!--<StackPanel Orientation="Horizontal">
                 <TextBlock Text="Vask tøj" Margin="0, 0 , 20, 0"></TextBlock>
                 <TextBlock Text="03-03-2020" Margin="0, 0, 520, 0"></TextBlock>
                 <Button Content="Remove"></Button>
-            </StackPanel>
+            </StackPanel>-->
             <ListView ItemsSource="{Binding Assignments}" SelectedItem="{Binding SelectedAssignment}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
                             <TextBlock Text="{Binding Task}"></TextBlock>
-                            <TextBlock Text="{Binding Dato}" Margin="0, 0, 300, 0"></TextBlock>
-                            <Button Content="Remove" Command="{Binding XXXCommand}"></Button>
+                            <TextBlock Text="{Binding Dato}" Foreground="{Binding DateColorForNotification}" Margin="0, 0, 300, 0"></TextBlock>
+                            <!--<Button Content="Remove" Command="{Binding XXXCommand}"></Button>-->
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
