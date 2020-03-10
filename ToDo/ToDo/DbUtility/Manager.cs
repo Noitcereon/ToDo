@@ -37,6 +37,22 @@ namespace ToDo.DbUtility
             return returListe;
         }
 
+        public void Create(ToDoAssignment newToDo)
+        {
+            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand("INSERT INTO Task (task_title, task_deadline) VALUES (@task_title, @task_deadline) ", conn))
+                {
+                    cmd.Parameters.AddWithValue("@task_title", newToDo.Task);
+                    cmd.Parameters.AddWithValue("@task_deadline", newToDo.Dato);
+
+                    cmd.ExecuteNonQuery();
+
+                }
+            }
+        }
+
         private ToDoAssignment ReadNext(SqlDataReader reader)
         {
             ToDoAssignment newObject = new ToDoAssignment();

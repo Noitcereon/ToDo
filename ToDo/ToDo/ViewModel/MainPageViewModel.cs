@@ -20,19 +20,19 @@ namespace ToDo.ViewModel
         private ToDoAssignment _newAssignment;
         private bool _showCreateContainer;
         private string _toDoString;
-        private DateTimeOffset _toDoDateTime;
+        private Manager _manager;
+        private DateTimeOffset _toDoDateTime = DateTimeOffset.Now;
 
         public MainPageViewModel()
         {
             _assignments = new ObservableCollection<ToDoAssignment>();
-            Manager manager = new Manager();
-            _assignments = manager.GetAll();
+            _manager = new Manager();
+            _assignments = _manager.GetAll();
             _showCreateContainer = false;
             OpenCreateContainerBtn = new RelayCommand(OpenCreateContainerBtnMethod);
             CreateNewToDoBtn = new RelayCommand(AddAssignment);
 
         }
-
 
         public RelayCommand CreateNewToDoBtn { get; set; }
 
@@ -103,6 +103,7 @@ namespace ToDo.ViewModel
         {
             _newAssignment = new ToDoAssignment(ToDoString,ToDoDateTime);
             Assignments.Add(_newAssignment);
+            _manager.Create(_newAssignment);
             ShowCreateContainer = false;
             ToDoString = null;
         }
