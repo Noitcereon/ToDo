@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ToDo.Annotations;
 using ToDo.Common;
+using ToDo.DbUtility;
 using ToDo.Model;
 
 namespace ToDo.ViewModel
@@ -24,11 +25,14 @@ namespace ToDo.ViewModel
         public MainPageViewModel()
         {
             _assignments = new ObservableCollection<ToDoAssignment>();
+            Manager manager = new Manager();
+            _assignments = manager.GetAll();
             _showCreateContainer = false;
             OpenCreateContainerBtn = new RelayCommand(OpenCreateContainerBtnMethod);
             CreateNewToDoBtn = new RelayCommand(AddAssignment);
 
         }
+
 
         public RelayCommand CreateNewToDoBtn { get; set; }
 
