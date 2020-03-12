@@ -93,7 +93,8 @@
                     <!-- Opret opgave command -->
                 </StackPanel>
             </Popup>
-            <Button Content="Tilføj opgave" Command="{Binding OpenCreateContainerBtn}"></Button>
+            <Button Content="Tilføj opgave" Command="{Binding OpenCreateContainerBtn}" Width="100"></Button>
+            <Button Content="Slet opgave" Command="{Binding}" Width="100"/>
         </StackPanel>
 
         <!-- Aside -->
