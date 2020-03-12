@@ -70,7 +70,7 @@
                 <TextBlock Text="03-03-2020" Margin="0, 0, 520, 0"></TextBlock>
                 <Button Content="Remove"></Button>
             </StackPanel>-->
-            <ListView ItemsSource="{Binding Assignments}" SelectedItem="{Binding SelectedAssignment}">
+            <ListView ItemsSource="{Binding Assignments}" SelectedItem="{Binding SelectedAssignment, Mode=TwoWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
