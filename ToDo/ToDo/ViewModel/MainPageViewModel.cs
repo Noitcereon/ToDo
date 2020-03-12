@@ -31,6 +31,7 @@ namespace ToDo.ViewModel
             _manager = new Manager();
             _assignments = _manager.GetAll();
             _showCreateContainer = false;
+            _showUpdateContainer = false;
             OpenCreateContainerBtn = new RelayCommand(OpenCreateContainerBtnMethod);
             CreateNewToDoBtn = new RelayCommand(AddAssignment);
             DeleteToDoBtn = new RelayCommand(DeleteTask);
