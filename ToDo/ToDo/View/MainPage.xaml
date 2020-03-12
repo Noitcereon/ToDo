@@ -104,7 +104,7 @@
 
             <Button Content="Tilføj opgave" Command="{Binding OpenCreateContainerBtn}" Width="100"></Button>
             <Button Content="Slet" Command="{Binding DeleteToDoBtn}" Width="100" Background="Red"/>
-            <Button Content="Updater" Command="{Binding}" Width="100" Background="Navy"/>
+            <Button Content="Updater" Command="{Binding OpenToDoUpdateBtn}" Width="100" Background="Navy"/>
         </StackPanel>
 
         <!-- Aside -->

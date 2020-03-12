@@ -156,6 +156,8 @@ namespace ToDo.ViewModel
         private void UpdateTask()
         {
             _manager.Update(SelectedAssignment);
+
+            ShowUpdateContainer = false;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
