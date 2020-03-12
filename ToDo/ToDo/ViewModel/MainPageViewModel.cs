@@ -132,7 +132,7 @@ namespace ToDo.ViewModel
 
         private void OpenUpdate()
         {
-            oldT = SelectedAssignment;
+            oldT = new ToDoAssignment(SelectedAssignment.Task,SelectedAssignment.Dato);
             if (ShowUpdateContainer)
             {
                 ShowUpdateContainer = false;
@@ -166,6 +166,7 @@ namespace ToDo.ViewModel
             _manager.Update(SelectedAssignment);
             _assignments.Add(SelectedAssignment);
             ShowUpdateContainer = false;
+            
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
