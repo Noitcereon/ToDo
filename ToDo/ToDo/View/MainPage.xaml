@@ -94,7 +94,8 @@
                 </StackPanel>
             </Popup>
             <Button Content="Tilføj opgave" Command="{Binding OpenCreateContainerBtn}" Width="100"></Button>
-            <Button Content="Slet opgave" Command="{Binding DeleteToDoBtn}" Width="100"/>
+            <Button Content="Slet" Command="{Binding DeleteToDoBtn}" Width="100" Background="Red"/>
+            <Button Content="Updater" Command="{Binding}" Width="100" Background="Navy"/>
         </StackPanel>
 
         <!-- Aside -->
