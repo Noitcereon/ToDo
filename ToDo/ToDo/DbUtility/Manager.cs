@@ -67,6 +67,23 @@ namespace ToDo.DbUtility
             }
         }
 
+        public void Update(ToDoAssignment toDo)
+        {
+            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand("UPDATE Task SET task_title = @task_title, " +
+                                                             "task_deadline = @task_deadline WHERE task_id = @task_id", conn))
+                {
+                    cmd.Parameters.AddWithValue("@task_id", toDo.Id);
+                    cmd.Parameters.AddWithValue("@task_title", toDo.Task);
+                    cmd.Parameters.AddWithValue("@task_deadline", toDo.Dato);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
         private ToDoAssignment ReadNext(SqlDataReader reader)
         {
             ToDoAssignment newObject = new ToDoAssignment();
