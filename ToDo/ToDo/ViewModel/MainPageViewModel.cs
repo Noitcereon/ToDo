@@ -116,6 +116,7 @@ namespace ToDo.ViewModel
         private void DeleteTask()
         {
             _manager.Delete(SelectedAssignment);
+            Assignments.Remove(SelectedAssignment);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
