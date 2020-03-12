@@ -17,6 +17,7 @@ namespace ToDo.DbUtility
                                                 "Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;" +
                                                 "ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
+        #region GetAll
         public ObservableCollection<ToDoAssignment> GetAll()
         {
             ObservableCollection<ToDoAssignment> returListe = new ObservableCollection<ToDoAssignment>();
@@ -24,7 +25,7 @@ namespace ToDo.DbUtility
             using (SqlConnection conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Task",conn))
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Task", conn))
                 {
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
@@ -36,7 +37,9 @@ namespace ToDo.DbUtility
 
             return returListe;
         }
+        #endregion
 
+        #region Create
         public void Create(ToDoAssignment newToDo)
         {
             using (SqlConnection conn = new SqlConnection(ConnectionString))
@@ -52,7 +55,9 @@ namespace ToDo.DbUtility
                 }
             }
         }
+        #endregion
 
+        #region Delete
         public void Delete(ToDoAssignment toDo)
         {
             using (SqlConnection conn = new SqlConnection(ConnectionString))
@@ -66,7 +71,9 @@ namespace ToDo.DbUtility
                 }
             }
         }
+        #endregion
 
+        #region Update
         public void Update(ToDoAssignment toDo)
         {
             using (SqlConnection conn = new SqlConnection(ConnectionString))
@@ -83,7 +90,9 @@ namespace ToDo.DbUtility
                 }
             }
         }
+        #endregion
 
+        #region ReadNext
         private ToDoAssignment ReadNext(SqlDataReader reader)
         {
             ToDoAssignment newObject = new ToDoAssignment();
@@ -92,6 +101,7 @@ namespace ToDo.DbUtility
             newObject.Dato = reader.GetDateTimeOffset(2);
 
             return newObject;
-        }
+        } 
+        #endregion
     }
 }
