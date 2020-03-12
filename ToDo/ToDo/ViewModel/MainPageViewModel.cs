@@ -126,7 +126,14 @@ namespace ToDo.ViewModel
 
         private void OpenUpdate()
         {
-            throw new NotImplementedException();
+            if (ShowUpdateContainer)
+            {
+                ShowUpdateContainer = false;
+            }
+            else
+            {
+                ShowUpdateContainer = true;
+            }
         }
 
         public void AddAssignment()
