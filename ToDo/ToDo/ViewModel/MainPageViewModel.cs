@@ -162,9 +162,20 @@ namespace ToDo.ViewModel
 
         private void UpdateTask()
         {
-            _assignments.Remove(oldT);
             _manager.Update(SelectedAssignment);
-            _assignments.Add(SelectedAssignment);
+
+            int counter = 0;
+            foreach (var item in Assignments)
+            {
+                if (item.Equals(SelectedAssignment))
+                {
+                    Assignments[counter] = SelectedAssignment;
+                    break;
+                }
+
+                counter++;
+            }
+
             ShowUpdateContainer = false;
             
         }
