@@ -63,36 +63,31 @@
         <StackPanel x:Name="Main" Grid.Column="0" Grid.Row="1" 
                                   Grid.ColumnSpan="6" Grid.RowSpan="9" 
                     Background="Green">
+            <!-- Read -->
             <TextBlock Text="Opgaver" Style="{StaticResource HeadlineStyle}"></TextBlock>
-            <!-- Hardcoded example -->
-            <!--<StackPanel Orientation="Horizontal">
-                <TextBlock Text="Vask tøj" Margin="0, 0 , 20, 0"></TextBlock>
-                <TextBlock Text="03-03-2020" Margin="0, 0, 520, 0"></TextBlock>
-                <Button Content="Remove"></Button>
-            </StackPanel>-->
             <ListView ItemsSource="{Binding Assignments}" SelectedItem="{Binding SelectedAssignment, Mode=TwoWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
                             <TextBlock Text="{Binding Task}"></TextBlock>
                             <TextBlock Text="{Binding Dato}" Foreground="{Binding DateColorForNotification}" Margin="0, 0, 300, 0"></TextBlock>
-                            <!--<Button Content="Remove" Command="{Binding XXXCommand}"></Button>-->
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <!-- Create Popup -->
             <Popup IsOpen="{Binding ShowCreateContainer}" 
                    VerticalOffset="0" HorizontalOffset="500" >
                 <StackPanel Background="Purple" Width="350" Height="200" Padding="8">
                     <TextBlock>Opgave navn:</TextBlock>
                     <TextBox PlaceholderText="Indtast opgave navn..." Text="{Binding ToDoString , Mode=TwoWay}"></TextBox>
                     <TextBlock Text="Deadline:"></TextBlock>
-                    <!-- TextBox PlaceholderText="YYYY-MM-DD-HH:mm" Text="{Binding ToDoDateTime , Mode=TwoWay}"></ -->
                     <DatePicker Date="{Binding ToDoDateTime, Mode=TwoWay}" />
-                    <Button Content="Opret" Command="{Binding CreateNewToDoBtn}"></Button>
                     <!-- Opret opgave command -->
+                    <Button Content="Opret" Command="{Binding CreateNewToDoBtn}"></Button>
                 </StackPanel>
             </Popup>
+
             <Button Content="Tilføj opgave" Command="{Binding OpenCreateContainerBtn}" Width="100"></Button>
             <Button Content="Slet" Command="{Binding DeleteToDoBtn}" Width="100" Background="Red"/>
             <Button Content="Updater" Command="{Binding}" Width="100" Background="Navy"/>
