@@ -88,6 +88,20 @@
                 </StackPanel>
             </Popup>
 
+            <!-- Update Popup -->
+            <Popup IsOpen="{Binding ShowUpdateContainer}" 
+                   VerticalOffset="0" HorizontalOffset="500" >
+                <StackPanel Background="Gray" Width="350" Height="200" Padding="8">
+                    <TextBlock Text="Opdater" Style="{StaticResource HeadlineStyle}"></TextBlock>
+                    <TextBlock>Opgave navn:</TextBlock>
+                    <TextBox PlaceholderText="Indtast opgave navn..." Text="{Binding SelectedAssignment.Task , Mode=TwoWay}"></TextBox>
+                    <TextBlock Text="Deadline:"></TextBlock>
+                    <DatePicker Date="{Binding SelectedAssignment.Dato, Mode=TwoWay}" />
+                    <!-- Update opgave command -->
+                    <Button Content="Gem" Command="{Binding UpdateToDoBtn}"></Button>
+                </StackPanel>
+            </Popup>
+
             <Button Content="Tilføj opgave" Command="{Binding OpenCreateContainerBtn}" Width="100"></Button>
             <Button Content="Slet" Command="{Binding DeleteToDoBtn}" Width="100" Background="Red"/>
             <Button Content="Updater" Command="{Binding}" Width="100" Background="Navy"/>
