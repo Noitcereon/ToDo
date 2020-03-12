@@ -70,7 +70,7 @@ namespace ToDo.DbUtility
         private ToDoAssignment ReadNext(SqlDataReader reader)
         {
             ToDoAssignment newObject = new ToDoAssignment();
-
+            newObject.Id = reader.GetInt32(0);
             newObject.Task = reader.GetString(1);
             newObject.Dato = reader.GetDateTimeOffset(2);
 
