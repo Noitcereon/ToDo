@@ -58,9 +58,9 @@ namespace ToDo.DbUtility
             using (SqlConnection conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
-                using (SqlCommand cmd = new SqlCommand("DELETE FROM Task WHERE Task_Id = @Task_Id", conn))
+                using (SqlCommand cmd = new SqlCommand("DELETE FROM Task WHERE task_id = @task_id", conn))
                 {
-                    cmd.Parameters.AddWithValue("@Task_Id", toDo.Id);
+                    cmd.Parameters.AddWithValue("@task_id", toDo.Id);
 
                     cmd.ExecuteNonQuery();
                 }
