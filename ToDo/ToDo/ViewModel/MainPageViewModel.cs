@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Contacts;
 using ToDo.Annotations;
 using ToDo.Common;
 using ToDo.DbUtility;
@@ -32,7 +33,6 @@ namespace ToDo.ViewModel
             OpenCreateContainerBtn = new RelayCommand(OpenCreateContainerBtnMethod);
             CreateNewToDoBtn = new RelayCommand(AddAssignment);
             DeleteToDoBtn = new RelayCommand(DeleteTask);
-
         }
 
         public RelayCommand DeleteToDoBtn { get; set; }
@@ -115,8 +115,10 @@ namespace ToDo.ViewModel
 
         private void DeleteTask()
         {
+            if (SelectedAssignment == null) return;
             _manager.Delete(SelectedAssignment);
             Assignments.Remove(SelectedAssignment);
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
