@@ -24,6 +24,7 @@ namespace ToDo.ViewModel
         private Manager _manager;
         private DateTimeOffset _toDoDateTime = DateTimeOffset.Now;
         private bool _showUpdateContainer;
+        private ToDoAssignment oldT = null;
 
         public MainPageViewModel()
         {
@@ -131,6 +132,7 @@ namespace ToDo.ViewModel
 
         private void OpenUpdate()
         {
+            oldT = SelectedAssignment;
             if (ShowUpdateContainer)
             {
                 ShowUpdateContainer = false;
@@ -160,7 +162,9 @@ namespace ToDo.ViewModel
 
         private void UpdateTask()
         {
+            _assignments.Remove(oldT);
             _manager.Update(SelectedAssignment);
+            _assignments.Add(SelectedAssignment);
             ShowUpdateContainer = false;
         }
 
