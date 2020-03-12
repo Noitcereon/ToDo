@@ -23,6 +23,7 @@ namespace ToDo.ViewModel
         private string _toDoString;
         private Manager _manager;
         private DateTimeOffset _toDoDateTime = DateTimeOffset.Now;
+        private bool _showUpdateContainer;
 
         public MainPageViewModel()
         {
@@ -34,7 +35,12 @@ namespace ToDo.ViewModel
             CreateNewToDoBtn = new RelayCommand(AddAssignment);
             DeleteToDoBtn = new RelayCommand(DeleteTask);
             UpdateToDoBtn = new RelayCommand(UpdateTask);
+            OpenToDoUpdateBtn = new RelayCommand(OpenUpdate);
         }
+
+        
+
+        public RelayCommand OpenToDoUpdateBtn { get; set; }
 
         public RelayCommand UpdateToDoBtn { get; set; }
 
@@ -53,6 +59,17 @@ namespace ToDo.ViewModel
             {
                 if (value == _showCreateContainer) return;
                 _showCreateContainer = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public bool ShowUpdateContainer
+        {
+            get => _showUpdateContainer;
+            set
+            {
+                if (value == _showUpdateContainer) return;
+                _showUpdateContainer = value;
                 OnPropertyChanged();
             }
         }
@@ -107,6 +124,11 @@ namespace ToDo.ViewModel
             }
         }
 
+        private void OpenUpdate()
+        {
+            throw new NotImplementedException();
+        }
+
         public void AddAssignment()
         {
             _newAssignment = new ToDoAssignment(ToDoString,ToDoDateTime);
@@ -126,7 +148,7 @@ namespace ToDo.ViewModel
 
         private void UpdateTask()
         {
-            throw new NotImplementedException();
+            _manager.Update(SelectedAssignment);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
