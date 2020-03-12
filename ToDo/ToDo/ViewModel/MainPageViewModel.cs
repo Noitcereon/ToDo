@@ -88,7 +88,11 @@ namespace ToDo.ViewModel
         public ToDoAssignment SelectedAssignment
         {
             get => _selectedAssignment;
-            set => _selectedAssignment = value;
+            set
+            {
+                _selectedAssignment = value;
+                OnPropertyChanged();
+            } 
         }
 
         public string ToDoString
@@ -157,7 +161,6 @@ namespace ToDo.ViewModel
         private void UpdateTask()
         {
             _manager.Update(SelectedAssignment);
-
             ShowUpdateContainer = false;
         }
 
