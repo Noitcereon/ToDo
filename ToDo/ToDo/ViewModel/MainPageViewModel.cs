@@ -31,8 +31,13 @@ namespace ToDo.ViewModel
             _showCreateContainer = false;
             OpenCreateContainerBtn = new RelayCommand(OpenCreateContainerBtnMethod);
             CreateNewToDoBtn = new RelayCommand(AddAssignment);
+            DeleteToDoBtn = new RelayCommand(DeleteTask);
 
         }
+
+        public RelayCommand DeleteToDoBtn { get; set; }
+
+        
 
         public RelayCommand CreateNewToDoBtn { get; set; }
 
@@ -106,6 +111,11 @@ namespace ToDo.ViewModel
             _manager.Create(_newAssignment);
             ShowCreateContainer = false;
             ToDoString = null;
+        }
+
+        private void DeleteTask()
+        {
+            _manager.Delete(SelectedAssignment);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

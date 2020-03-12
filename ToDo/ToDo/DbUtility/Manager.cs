@@ -53,6 +53,20 @@ namespace ToDo.DbUtility
             }
         }
 
+        public void Delete(ToDoAssignment toDo)
+        {
+            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand("DELETE FROM Task WHERE Task_Id = @Task_Id", conn))
+                {
+                    cmd.Parameters.AddWithValue("@Task_Id", toDo.Id);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
         private ToDoAssignment ReadNext(SqlDataReader reader)
         {
             ToDoAssignment newObject = new ToDoAssignment();
