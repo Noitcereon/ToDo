@@ -32,6 +32,7 @@ namespace ToDo.ViewModel
             _doneAssignments = new ObservableCollection<ToDoAssignment>();
             _manager = new Manager();
             _assignments = _manager.GetAll();
+            _doneAssignments = _manager.GetAllDone();
             _showCreateContainer = false;
             _showUpdateContainer = false;
             OpenCreateContainerBtn = new RelayCommand(OpenCreateContainerBtnMethod);
