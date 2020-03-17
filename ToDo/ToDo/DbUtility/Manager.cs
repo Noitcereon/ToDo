@@ -25,7 +25,7 @@ namespace ToDo.DbUtility
             using (SqlConnection conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Task", conn))
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Task WHERE task_done = 0", conn))
                 {
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
@@ -78,9 +78,10 @@ namespace ToDo.DbUtility
             using (SqlConnection conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
-                using (SqlCommand cmd = new SqlCommand("UPDATE Task SET task_done = true WHERE task_id = @task_id", conn))
+                using (SqlCommand cmd = new SqlCommand("UPDATE Task SET task_done = @task_done WHERE task_id = @task_id", conn))
                 {
                     cmd.Parameters.AddWithValue("@task_id", toDo.Id);
+                    cmd.Parameters.AddWithValue("@task_done", !toDo.IsDone);
 
                     cmd.ExecuteNonQuery();
                 }

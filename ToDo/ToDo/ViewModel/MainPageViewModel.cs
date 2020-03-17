@@ -40,9 +40,11 @@ namespace ToDo.ViewModel
             DeleteToDoBtn = new RelayCommand(DeleteTask);
             UpdateToDoBtn = new RelayCommand(UpdateTask);
             OpenToDoUpdateBtn = new RelayCommand(OpenUpdate);
+            ChangeDoneStatusBtn = new RelayCommand(ChangeDoneStatus);
         }
 
-        
+
+
 
         public RelayCommand OpenToDoUpdateBtn { get; set; }
 
@@ -50,7 +52,7 @@ namespace ToDo.ViewModel
 
         public RelayCommand DeleteToDoBtn { get; set; }
 
-        
+        public RelayCommand ChangeDoneStatusBtn { get; set; }
 
         public RelayCommand CreateNewToDoBtn { get; set; }
 
@@ -91,7 +93,7 @@ namespace ToDo.ViewModel
         public ObservableCollection<ToDoAssignment> DoneAssignments
         {
             get => _doneAssignments;
-            set => _doneAssignments = value;
+            set { _doneAssignments = value; OnPropertyChanged(); } 
         }
 
         public ToDoAssignment SelectedAssignment
@@ -185,6 +187,13 @@ namespace ToDo.ViewModel
 
             ShowUpdateContainer = false;
             
+        }
+
+        private void ChangeDoneStatus()
+        {
+            _manager.MoveToDone(SelectedAssignment);
+            DoneAssignments.Add(SelectedAssignment);
+            Assignments.Remove(SelectedAssignment);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

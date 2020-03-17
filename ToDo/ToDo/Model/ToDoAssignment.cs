@@ -12,6 +12,7 @@ namespace ToDo.Model
         private string _task;
         private DateTimeOffset _dato;
         private int _id;
+        private bool _isDone = false;
         #endregion
 
         #region Properties
@@ -32,6 +33,12 @@ namespace ToDo.Model
         {
             get => _id;
             set => _id = value;
+        }
+
+        public bool IsDone
+        {
+            get => _isDone;
+            set => _isDone = value;
         }
 
         public string DateColorForNotification => Notify();
