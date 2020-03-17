@@ -94,7 +94,7 @@ namespace ToDo.DbUtility
             using (SqlConnection conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Task WHERE task_done = true", conn))
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Task WHERE task_done = 1", conn))
                 {
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
