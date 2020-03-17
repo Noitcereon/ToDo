@@ -12,6 +12,7 @@
     <Page.Resources>
         <Style TargetType="TextBlock" x:Name="HeadlineStyle">
             <Setter Property="FontSize" Value="32"></Setter>
+            <Setter Property="HorizontalTextAlignment" Value="Center"></Setter>
         </Style>
         <Style TargetType="TextBlock">
             <Setter Property="Foreground" Value="Black"></Setter>
@@ -55,17 +56,17 @@
         <!-- Header -->
         <StackPanel x:Name="Header" Grid.Column="0" Grid.Row="0"
                                     Grid.ColumnSpan="10"
-                    Background="Red">
-            <TextBlock Text="To-do" FontSize="36" Foreground="White"></TextBlock>
+                    Background="Black">
+            <TextBlock Text="To-do" FontSize="36" HorizontalTextAlignment="Center" Foreground="DarkGray"></TextBlock>
         </StackPanel>
 
         <!-- Main -->
         <StackPanel x:Name="Main" Grid.Column="0" Grid.Row="1" 
                                   Grid.ColumnSpan="6" Grid.RowSpan="9" 
-                    Background="Green">
+                    Background="DimGray">
             <!-- Read -->
             <TextBlock Text="Opgaver" Style="{StaticResource HeadlineStyle}"></TextBlock>
-            <ListView ItemsSource="{Binding Assignments}" SelectedItem="{Binding SelectedAssignment, Mode=TwoWay}">
+            <ListView ItemsSource="{Binding Assignments}" SelectedItem="{Binding SelectedAssignment, Mode=TwoWay}" Margin="0, 20, 0, 0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
@@ -78,20 +79,20 @@
             <!-- Create Popup -->
             <Popup IsOpen="{Binding ShowCreateContainer}" 
                    VerticalOffset="0" HorizontalOffset="500" >
-                <StackPanel Background="Purple" Width="350" Height="200" Padding="8">
+                <StackPanel Background="ForestGreen" Width="350" Height="200" Padding="8" CornerRadius="10">
                     <TextBlock>Opgave navn:</TextBlock>
                     <TextBox PlaceholderText="Indtast opgave navn..." Text="{Binding ToDoString , Mode=TwoWay}"></TextBox>
                     <TextBlock Text="Deadline:"></TextBlock>
                     <DatePicker Date="{Binding ToDoDateTime, Mode=TwoWay}" />
                     <!-- Opret opgave command -->
-                    <Button Content="Opret" Command="{Binding CreateNewToDoBtn}"></Button>
+                    <Button Content="Opret" Command="{Binding CreateNewToDoBtn}" CornerRadius="5"></Button>
                 </StackPanel>
             </Popup>
 
             <!-- Update Popup -->
             <Popup IsOpen="{Binding ShowUpdateContainer}" 
                    VerticalOffset="0" HorizontalOffset="500" >
-                <StackPanel Background="Gray" Width="350" Height="200" Padding="8">
+                <StackPanel Background="DodgerBlue" Width="350" Height="200" Padding="8" CornerRadius="10">
                     <TextBlock Text="Opdater" Style="{StaticResource HeadlineStyle}"></TextBlock>
                     <TextBlock>Opgave navn:</TextBlock>
                     <TextBox PlaceholderText="Indtast opgave navn..." Text="{Binding SelectedAssignment.Task , Mode=TwoWay}"></TextBox>
@@ -101,22 +102,29 @@
                     <Button Content="Gem" Command="{Binding UpdateToDoBtn}"></Button>
                 </StackPanel>
             </Popup>
+            <StackPanel Margin="5">
+                <Button Content="Tilføj opgave" Command="{Binding OpenCreateContainerBtn}" Background="ForestGreen" Width="100" CornerRadius="5" Margin="5"></Button>
+                <Button Content="Slet" Command="{Binding DeleteToDoBtn}" Width="100" Background="Red" CornerRadius="5"  Margin="5"/>
+                <Button Content="Opdater" Command="{Binding OpenToDoUpdateBtn}" Width="100" Background="DodgerBlue" CornerRadius="5"  Margin="5"/>
+            </StackPanel>
 
-            <Button Content="Tilføj opgave" Command="{Binding OpenCreateContainerBtn}" Width="100"></Button>
-            <Button Content="Slet" Command="{Binding DeleteToDoBtn}" Width="100" Background="Red"/>
-            <Button Content="Updater" Command="{Binding OpenToDoUpdateBtn}" Width="100" Background="Navy"/>
         </StackPanel>
 
         <!-- Aside -->
         <StackPanel x:Name="Aside" Grid.Column="6" Grid.Row="1" 
                                    Grid.ColumnSpan="4" Grid.RowSpan="9" 
-                    Background="Blue">
-            <TextBlock Text="Færdige opgaver" Style="{StaticResource HeadlineStyle}"></TextBlock>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Vask tøj" Margin="20, 0 , 20 ,0"></TextBlock>
-                <TextBlock Text="03-03-2020" Margin="0, 0, 270, 0"></TextBlock>
-                <Button Content="Remove"></Button>
-            </StackPanel>
+                    Background="#FFA9A9B9">
+            <TextBlock Style="{StaticResource HeadlineStyle}">Færdige Opgaver</TextBlock>
+            <ItemsControl ItemsSource="{Binding DoneAssignments}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Task}"></TextBlock>
+                            <TextBlock Text="{Binding Dato}" Foreground="Green" Margin="0, 0, 300, 0"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </StackPanel>
 
     </Grid>
