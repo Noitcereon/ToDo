@@ -57,9 +57,13 @@ namespace ToDo.Model
 
         public string Notify()
         {
-            bool isNearDeadline = DateTime.Today > Dato.AddDays(-3);
+            bool isNearDeadline = DateTime.Today > Dato.AddDays(-3) && DateTime.Today <= Dato;
 
-            string color = isNearDeadline ? "Red" : "Black";
+            string color = "Black";
+
+            if (isNearDeadline) color = "Yellow";
+            else if (DateTime.Today > Dato) color = "Red";
+
 
             return color;
         }
