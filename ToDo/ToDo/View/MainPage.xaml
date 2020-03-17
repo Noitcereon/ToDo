@@ -69,9 +69,14 @@
             <ListView ItemsSource="{Binding Assignments}" SelectedItem="{Binding SelectedAssignment, Mode=TwoWay}" Margin="0, 20, 0, 0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel>
-                            <TextBlock Text="{Binding Task}"></TextBlock>
-                            <TextBlock Text="{Binding Dato}" Foreground="{Binding DateColorForNotification}" Margin="0, 0, 300, 0"></TextBlock>
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel>
+                                <TextBlock Text="{Binding Task}"></TextBlock>
+                                <TextBlock Text="{Binding Dato}" Foreground="{Binding DateColorForNotification}" Margin="0, 0, 100, 0"></TextBlock>
+                            </StackPanel>
+                           
+                            <Image Source="../../Assets/done_outline-24px.svg" Width="30"></Image>
+                            
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
