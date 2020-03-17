@@ -17,6 +17,7 @@ namespace ToDo.ViewModel
     public class MainPageViewModel : INotifyPropertyChanged
     {
         private ObservableCollection<ToDoAssignment> _assignments;
+        private ObservableCollection<ToDoAssignment> _doneAssignments;
         private ToDoAssignment _selectedAssignment;
         private ToDoAssignment _newAssignment;
         private bool _showCreateContainer;
@@ -28,8 +29,10 @@ namespace ToDo.ViewModel
         public MainPageViewModel()
         {
             _assignments = new ObservableCollection<ToDoAssignment>();
+            _doneAssignments = new ObservableCollection<ToDoAssignment>();
             _manager = new Manager();
             _assignments = _manager.GetAll();
+            _doneAssignments = _manager.GetAllDone();
             _showCreateContainer = false;
             _showUpdateContainer = false;
             OpenCreateContainerBtn = new RelayCommand(OpenCreateContainerBtnMethod);
@@ -83,6 +86,12 @@ namespace ToDo.ViewModel
                 _assignments = value;
                 OnPropertyChanged();
             } 
+        }
+
+        public ObservableCollection<ToDoAssignment> DoneAssignments
+        {
+            get => _doneAssignments;
+            set => _doneAssignments = value;
         }
 
         public ToDoAssignment SelectedAssignment

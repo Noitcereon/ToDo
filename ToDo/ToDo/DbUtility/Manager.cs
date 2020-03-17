@@ -73,6 +73,40 @@ namespace ToDo.DbUtility
         }
         #endregion
 
+        public void MoveToDone(ToDoAssignment toDo)
+        {
+            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand("UPDATE Task SET task_done = true WHERE task_id = @task_id", conn))
+                {
+                    cmd.Parameters.AddWithValue("@task_id", toDo.Id);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public ObservableCollection<ToDoAssignment> GetAllDone()
+        {
+            ObservableCollection<ToDoAssignment> returListe = new ObservableCollection<ToDoAssignment>();
+
+            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Task WHERE task_done = true", conn))
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        returListe.Add(ReadNext(reader));
+                    }
+                }
+            }
+
+            return returListe;
+        }
+
         #region Update
         public void Update(ToDoAssignment toDo)
         {
