@@ -95,7 +95,7 @@ namespace ToDo.DbUtility
             using (SqlConnection conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Task WHERE task_done = 1", conn))
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Task WHERE task_done = 1 AND NOT DATEADD(DAY, 10, task_deadline) <= GETDATE()", conn))
                 {
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
